@@ -48,12 +48,58 @@
     <p>Dating culture and habits have been irrevocably changed by the heavily technological world that we live in today, for better or for worse. With so many dating apps, websites, and tools, are there certain characteristics that statistically make one user stand out against another, or perhaps makes them more apt to find a relationship. We are seeking to assess whether previous findings regarding the predominant attributes that people look for while dating ‘in-person’ are the same as those that users look for on dating apps/websites such as Tinder, Bumble, and Hinge.</p>
 
     
-    <h1>Visualization</h1>
+    <h1>Visualizations</h1>
+    <h2 class='vis-title'>Dating app usage w/ age ranges</h2>
     
-    <p>Include the interactive visualization as part of this page. Static example follows.</p>
+    <p>The first visualization shows the relationship between the <i><b id="highlight">number 1 reason why people use dating apps</b></i> and their corresponding <i><b id="highlight">age range.</b></i> With this composition of pie charts that we have created we wanted to demonstrate how we can relate the reason behind the dating app usage and the age range that the users belong to. </p>
 
     
   </div>
+  
+  <!-- Visualization goes here -->
+  <div class='vis-holder'>
+    <!-- Change viewbox to whatever you want, e.g., '0 0 1000 6000' This determines your aspect ratio and coordinate system -->    
+    <!-- Delete all the sample SVG code below after the viewbox to before the closing tag. Populate this part of the SVG with D3. -->
+    <span class='flex-container'>
+      <span class='flex-child' id='area1'>To meet new people</span>
+      <span class='flex-child' id='area2'>For casual hookups</span>
+      <span class='flex-child' id='area3'>For entertainment</span>
+      <span class='flex-child' id='area4'>For a relationship</span>
+
+    <svg id='vis-svg-1'
+      preserveAspectRatio='xMidYMid meet' class='vis-svg' viewBox='0 0 500 500' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+      
+      <!-- <text x='30%' y='35%' text-anchor='middle'>A</text>
+      <text x='70%' y='35%' text-anchor='middle'>B</text>
+      <rect x='20%' y='40%' width='20%' height='20%' fill='yellow'></rect>
+      <circle cx='70%' cy='50%' r='10%' fill='blue'></circle> -->
+      
+      
+    <!-- Don't delete the closing tag! -->
+    
+    </svg>
+    
+  </div>
+  
+  <!-- Further writeup -->
+  <div class = 'content-column'>
+
+    <h2 class='vis-title'>Demo Video</h2>
+    
+    <p>Embed an MP4 demo video using the HTML5 &lt;video&gt; tag. For example, this screen recording Prof. Cody Dunne made of Mike Bostock's flexible transitions in D3 slide:</p>
+    
+    <video controls width='100%'>
+      <source src='http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4' type='video/mp4'>
+      <p>Your browser doesn't support HTML5 video. Here is
+       a <a href='http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4'>link to the video</a> instead.</p>
+    </video>
+    
+    <br><br><h2 class='vis-title'>Visualization explanation</h2>
+    
+    <p>For the creation of the visualization above we used the information provided in our survey which describes the main reason why users are active on their preferred dating app, 
+      and to provide a more insightful analysis we divided the results according to the age range of the user so we extract a relationship. Even though, as we can observe we have an uneven distribution regarding the ages 
+      of the users, we can extract relevant assumptions from the pies. For example, we can observe how the percentage of users between 24 and 26
+      increases when looking for a relationship out of the app.</p>
   
   <!-- Visualization goes here -->
 	<div id="my_dataviz"></div>
@@ -110,12 +156,16 @@
         Project</a>
         by Cody Dunne is used to create this assignment.
       </li>
+      <li>
+        <a href="https://codepen.io/Ash/pen/WBMxpp">
+        CSS style for titles</a>
+      </li>
     </ul>
   </div>
   
   <!-- Scripts at the end avoid need for dealing with async, defer, or onload event handlers -->
   <!-- <script src='lib/d3.v6.1.1/d3.min.js'></script> -->
-	<script src="https://d3js.org/d3.v4.js"></script>
+	<script src='lib/d3.v6.1.1/d3.min.js'></script>
   <script src='js/visualization.js'></script>
 </body>
 </html>

@@ -1,10 +1,220 @@
 // Immediately Invoked Function Expression to limit access to our 
 // variables and prevent 
-//d3.csv("data/Copy of Online Dating responses - Form Responses 1.csv").then((data) => {
 
-  //console.log(data.slice(0, 11));
+d3.csv("data/newpeople_age.csv").then((data,error) => {
+  if (error) throw error;
 
-//});
+  var margin = { top: 10, right: 30, bottom: 50, left: 60 },
+  width = 300 - margin.left - margin.right,
+  height = 290 - margin.top - margin.bottom;
+  var radius = width / 2;
+  var innerRadius = 0;
+
+		var svg1 = d3
+    .select("#area1")
+    .append('svg')
+    .attr('id','svg1')
+		.attr("width",width + margin.left + margin.right)
+		.attr("height",height + margin.top + margin.bottom);
+
+		var color = d3.scaleOrdinal(['#EBB9DF','#8CAE68','#D991BA','#60992D']);
+    var label = d3.arc().innerRadius(2 * radius / 4)
+    .outerRadius(radius);
+
+		// Generate the pie
+		var pie = d3.pie().value(d => d.Count);
+
+		// Generate the arcs
+		var arc = d3.arc()
+    .innerRadius(0)
+    .outerRadius(radius);
+
+		//Generate groups
+		var arcs = svg1.selectAll("g")
+					.data(pie(data))
+					.enter()
+					.append("g")
+          .attr('d', d3.arc()
+    .innerRadius(100)         // This is the size of the donut hole
+    .outerRadius(radius)
+  )
+          .attr("transform", "translate(" + radius + "," + radius + ")")
+					.attr("class", "arc")
+
+		//Draw arc paths
+		arcs.append("path")
+			.attr("fill", function(d, i) {
+				return color(i);
+			})
+			.attr("d", arc);
+
+    arcs.append("text")
+      .attr('transform', function(d){
+        return 'translate('+label.centroid(d)+')';
+      })
+      .attr("text-anchor", "middle")
+      .text(d => d.data.Age_Range)
+
+    // svg1.append("g")
+    //   .attr("transform", "translate(" + (width / 2 - 120) + "," + 10 + ")")
+    //   .append('text')
+    //   .attr("x", (width / 2))             
+    //   .attr("y", 0 - (margin.top / 2))
+    //   .attr("text-anchor", "middle")  
+    //   .style("font-size", "16px") 
+    //   .text("To meet new people");
+});
+d3.csv("data/hook_age.csv").then((data,error) => {
+  if (error) throw error;
+
+  var margin = { top: 10, right: 30, bottom: 50, left: 60 },
+  width = 300 - margin.left - margin.right,
+  height = 290 - margin.top - margin.bottom;
+  var radius = width / 2;
+  var innerRadius = 0;
+
+		var svg2 = d3
+    .select("#area2")
+    .append('svg')
+    .attr('id','svg2')
+		.attr("width",width + margin.left + margin.right)
+		.attr("height",height + margin.top + margin.bottom);
+
+		var color = d3.scaleOrdinal(['#EBB9DF','#8CAE68','#D991BA','#60992D']);
+    var label = d3.arc().innerRadius(2 * radius / 4)
+    .outerRadius(radius);
+
+		// Generate the pie
+		var pie = d3.pie().value(d => d.Count);
+
+		// Generate the arcs
+		var arc = d3.arc()
+    .innerRadius(0)
+    .outerRadius(radius);
+
+		//Generate groups
+		var arcs = svg2.selectAll("g")
+					.data(pie(data))
+					.enter()
+					.append("g")
+          .attr("transform", "translate(" + radius + "," + radius + ")")
+					.attr("class", "arc")
+
+		//Draw arc paths
+		arcs.append("path")
+			.attr("fill", function(d, i) {
+				return color(i);
+			})
+			.attr("d", arc);
+
+    arcs.append("text")
+      .attr('transform', function(d){
+        return 'translate('+label.centroid(d)+')';
+      })
+      .attr("text-anchor", "middle")
+      .text(d => d.data.Age_Range)
+});
+d3.csv("data/entertainment_age.csv").then((data,error) => {
+  if (error) throw error;
+
+  var margin = { top: 10, right: 30, bottom: 50, left: 60 },
+  width = 300 - margin.left - margin.right,
+  height = 290 - margin.top - margin.bottom;
+  var radius = width / 2;
+  var innerRadius = 0;
+
+		var svg2 = d3
+    .select("#area3")
+    .append('svg')
+    .attr('id','svg2')
+		.attr("width",width + margin.left + margin.right)
+		.attr("height",height + margin.top + margin.bottom);
+
+		var color = d3.scaleOrdinal(['#EBB9DF','#8CAE68','#D991BA','#60992D']);
+    var label = d3.arc().innerRadius(2 * radius / 4)
+    .outerRadius(radius);
+
+		// Generate the pie
+		var pie = d3.pie().value(d => d.Count);
+
+		// Generate the arcs
+		var arc = d3.arc()
+    .innerRadius(0)
+    .outerRadius(radius);
+
+		//Generate groups
+		var arcs = svg2.selectAll("g")
+					.data(pie(data))
+					.enter()
+					.append("g")
+          .attr("transform", "translate(" + radius + "," + radius + ")")
+					.attr("class", "arc")
+
+		//Draw arc paths
+		arcs.append("path")
+			.attr("fill", function(d, i) {
+				return color(i);
+			})
+			.attr("d", arc);
+
+    arcs.append("text")
+      .attr('transform', function(d){
+        return 'translate('+label.centroid(d)+')';
+      })
+      .attr("text-anchor", "middle")
+      .text(d => d.data.Age_Range)
+});
+d3.csv("data/relationship_age.csv").then((data,error) => {
+  if (error) throw error;
+
+  var margin = { top: 10, right: 30, bottom: 50, left: 60 },
+  width = 300 - margin.left - margin.right,
+  height = 290 - margin.top - margin.bottom;
+  var radius = width / 2;
+  var innerRadius = 0;
+
+		var svg2 = d3
+    .select("#area4")
+    .append('svg')
+    .attr('id','svg2')
+		.attr("width",width + margin.left + margin.right)
+		.attr("height",height + margin.top + margin.bottom);
+
+		var color = d3.scaleOrdinal(['#EBB9DF','#8CAE68','#D991BA','#60992D']);
+    var label = d3.arc().innerRadius(2 * radius / 4)
+    .outerRadius(radius);
+
+		// Generate the pie
+		var pie = d3.pie().value(d => d.Count);
+
+		// Generate the arcs
+		var arc = d3.arc()
+    .innerRadius(0)
+    .outerRadius(radius);
+
+		//Generate groups
+		var arcs = svg2.selectAll("g")
+					.data(pie(data))
+					.enter()
+					.append("g")
+          .attr("transform", "translate(" + radius + "," + radius + ")")
+					.attr("class", "arc")
+
+		//Draw arc paths
+		arcs.append("path")
+			.attr("fill", function(d, i) {
+				return color(i);
+			})
+			.attr("d", arc);
+
+    arcs.append("text")
+      .attr('transform', function(d){
+        return 'translate('+label.centroid(d)+')';
+      })
+      .attr("text-anchor", "middle")
+      .text(d => d.data.Age_Range)
+});
+
 
 // set the dimensions and margins of the graph
 var margin = {top: 10, right: 30, bottom: 20, left: 50},

@@ -15,6 +15,35 @@ h1, h2, h3 {
 
 }
 
+
+#title {
+    font-size:28px; 
+    font-weight:700;  
+    letter-spacing:0.5px; 
+    text-transform:uppercase; 
+    text-align:center; 
+    margin:auto; 
+    white-space:nowrap; 
+    padding-bottom:13px;
+  }
+h1 {
+    font-size:28px; 
+    font-weight:700;  
+    letter-spacing:0.5px; 
+    text-transform:uppercase; 
+    margin:auto; 
+    white-space:nowrap; 
+    padding-bottom:13px;
+}
+  #title:before {
+      background-color: #D991BA;
+      content: '';
+      display: block;
+      height: 3px;
+      width: 75px;
+      margin-bottom: 5px;
+  }
+
 .flex-container {
     display: flex;
 	justify-content: center;

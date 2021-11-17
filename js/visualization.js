@@ -26,7 +26,7 @@ var arc = d3.arc()
 .outerRadius(radius - 20);
 
 var svg = d3.select("#vis-svg-1")
-.attr("width", width)
+.attr("width", width+440)
 .attr("height", height)
 .append("g")
 .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");

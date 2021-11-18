@@ -3,9 +3,9 @@ var margin = {top: 10, right: 30, bottom: 20, left: 50},
     width = 460 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
-// append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
-  .append("svg")
+// append the svg4 object to the body of the page
+var svg4 = d3.select("#my_dataviz")
+  .append("svg4")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -26,7 +26,7 @@ d3.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRKwzteCb-m58OMLtu4EGBVm
       .domain(groups)
       .range([0, width])
       .padding([0.2])
-  svg.append("g")
+  svg4.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x).tickSizeOuter(0));
 
@@ -34,7 +34,7 @@ d3.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRKwzteCb-m58OMLtu4EGBVm
   var y = d3.scaleLinear()
     .domain([0, 120])
     .range([ height, 0 ]);
-  svg.append("g")
+  svg4.append("g")
     .call(d3.axisLeft(y));
 
   // color palette = one color per subgroup
@@ -48,7 +48,7 @@ d3.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRKwzteCb-m58OMLtu4EGBVm
     (data)
 
   // Show the bars
-  svg.append("g")
+  svg4.append("g")
     .selectAll("g")
     // Enter in the stack data = loop key per key = group per group
     .data(stackedData)

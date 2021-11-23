@@ -1,12 +1,15 @@
+
 <!DOCTYPE html>
 <html lang='en'>
 
 <!-- Metadata -->
 <head>
+  
   <meta charset='utf-8'>
+  
 
   <!-- Title -->
-  <title>Project Team ##: Topic, DS4200 F21</title>
+  <title >Project Team ##: Dating Applications Insights, DS4200 F21</title>
   
   <!-- CSS Styling -->
   <link rel='stylesheet' href='style.css'>
@@ -32,15 +35,15 @@
 
   <!-- Writeup -->
   <div class='content-column'>
-   <h1>Project Team ##: Topic, DS4200 F21</h1>
+   <h1 id='title'>Project Team ##: Dating Applications Insights, DS4200 F21</h1>
     
     <p><strong>Madeline O'Hara</strong>, <strong>Simran Kalita</strong>, <strong>Savana Minerva</strong> and <strong>Marta Navascues</strong></p>
     
     <p>Course Project as part of
-	<a href='https://northeastern.instructure.com/courses/18721'>DS4200 F21: Information Visualization</a>, 
-	taught by <a href='https://www.khoury.northeastern.edu/home/amosca/'>Prof. Ab Mosca</a>, 
-	<a href='https://visualization.khoury.northeastern.edu/'>Data Visualization @ Khoury</a>, 
-	<a href='https://www.khoury.northeastern.edu/'>Northeastern University</a>.</p>
+  <a href='https://northeastern.instructure.com/courses/18721'>DS4200 F21: Information Visualization</a>, 
+  taught by <a href='https://www.khoury.northeastern.edu/home/amosca/'>Prof. Ab Mosca</a>, 
+  <a href='https://visualization.khoury.northeastern.edu/'>Data Visualization @ Khoury</a>, 
+  <a href='https://www.khoury.northeastern.edu/'>Northeastern University</a>.</p>
     
     
     <h1>Abstract</h1>
@@ -48,9 +51,10 @@
     <p>Dating culture and habits have been irrevocably changed by the heavily technological world that we live in today, for better or for worse. With so many dating apps, websites, and tools, are there certain characteristics that statistically make one user stand out against another, or perhaps makes them more apt to find a relationship. We are seeking to assess whether previous findings regarding the predominant attributes that people look for while dating ‘in-person’ are the same as those that users look for on dating apps/websites such as Tinder, Bumble, and Hinge.</p>
 
     
-    <h1>Visualization</h1>
+    <h1>Visualizations</h1>
+    <h2 class='vis-title'>Dating app usage w/ age ranges</h2>
     
-    <p>Include the interactive visualization as part of this page. Static example follows.</p>
+    <p>The first visualization shows the relationship between the <i><b id="highlight">number 1 reason why people use dating apps</b></i> and their corresponding <i><b id="highlight">age range.</b></i> With this composition of pie charts that we have created we wanted to demonstrate how we can relate the reason behind the dating app usage and the age range that the users belong to. </p>
 
     
   </div>
@@ -59,14 +63,81 @@
   <div class='vis-holder'>
     <!-- Change viewbox to whatever you want, e.g., '0 0 1000 6000' This determines your aspect ratio and coordinate system -->    
     <!-- Delete all the sample SVG code below after the viewbox to before the closing tag. Populate this part of the SVG with D3. -->
+    <fieldset>
+      <legend>Select a reason to be in a dating app:</legend>
+    <form>
+      <label>
+        <div><label><input type='radio' name='reason' value='Entertainment' > Entertainment</label></div>
+        <div></label><input type='radio' name='reason' value='For a relationship'> For a relationship</label></div>
+        <div></label><input type='radio' name='reason' value='To meet new people'> To meet new people</label></div>
+        <div></label><input type='radio' name='reason' value='For casual hookups'> For casual hookups</label></div>
+    </label>
+    </form>
+    </fieldset>
     <svg id='vis-svg-1'
-      preserveAspectRatio='xMidYMid meet' class='vis-svg' viewBox='0 0 1000 1000' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+      preserveAspectRatio='xMidYMid meet' class='vis-svg' viewBox='0 0 500 500' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+      <g id='legend' transform='translate(0,0)' width='50' height='50'>
+        <text x='1%' y='16.5%' text-anchor='middle' style="font-size:17px;">Age Range:</text>
+        <circle cx='0%' cy='20.5%' r='1.3%' fill='#EBB9DF'></circle>
+        <text x='8%' y='21.5%' text-anchor='middle' style="font-size:17px;">18 to 19</text>
+        <circle cx='0%' cy='25.5%' r='1.3%' fill='#60992D'></circle>
+        <text x='8%' y='26.8%' text-anchor='middle' style="font-size:17px;">20 to 21</text>
+        <circle cx='0%' cy='30.5%' r='1.3%' fill='#D991BA'></circle>
+        <text x='8%' y='31.8%' text-anchor='middle' style="font-size:17px;">22 to 23</text>
+        <circle cx='0%' cy='35.5%' r='1.3%' fill='#8CAE68'></circle>
+        <text x='8%' y='36.8%' text-anchor='middle' style="font-size:17px;">24 to 26</text>
+
+      </g>
+      
+      <!-- <text x='30%' y='35%' text-anchor='middle'>A</text>
+      <text x='70%' y='35%' text-anchor='middle'>B</text>
+      <rect x='20%' y='40%' width='20%' height='20%' fill='yellow'></rect>
+      <circle cx='70%' cy='50%' r='10%' fill='blue'></circle> -->
+      
+      
+    <!-- Don't delete the closing tag! -->
+    </svg>
+    
+  </div>
+  
+  <!-- Further writeup -->
+  <div class = 'content-column'>
+
+    <h3 class='vis-title'>Demo Video</h3>
+    
+    <p>Embed an MP4 demo video using the HTML5 &lt;video&gt; tag. For example, this screen recording Prof. Cody Dunne made of Mike Bostock's flexible transitions in D3 slide:</p>
+    
+    <video controls width='100%'>
+      <source src='http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4' type='video/mp4'>
+      <p>Your browser doesn't support HTML5 video. Here is
+       a <a href='http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4'>link to the video</a> instead.</p>
+    </video>
+    
+    <br><br><h3 class='vis-title'>Visualization explanation</h3>
+    
+    <p>For the creation of the visualization above we used the information provided in our survey which describes the main reason why users are active on their preferred dating app, 
+      and to provide a more insightful analysis we divided the results according to the age range of the user so we extract a relationship. Even though, as we can observe we have an uneven distribution regarding the ages 
+      of the users, we can extract relevant assumptions from the pies. For example, we can observe how the percentage of users between 24 and 26
+      increases when looking for a relationship out of the app.</p>
+  
+
+      <br><br><h2 class='vis-title'>Vices turn ons vs. turn offs</h2>
+      
+      <p>The second visualization breaks down the “vices” displayed on dating profiles. It breaks them into two categories: <i><b id="highlight">turn-ons and turn-offs. </b></i> We have created this visualization to show the distribution of these traits among our population of users.
+  
+  <!-- Visualization goes here -->
+  <div id="my_dataviz"></div>
+  <div class='vis-holder-1'>
+    <!-- Change viewbox to whatever you want, e.g., '0 0 1000 6000' This determines your aspect ratio and coordinate system -->    
+    <!-- Delete all the sample SVG code below after the viewbox to before the closing tag. Populate this part of the SVG with D3. -->
+    <svg id='vis-svg'>
+      <!-- preserveAspectRatio='xMidYMid meet' class='vis-svg' viewBox='0 0 1000 1000' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
       
       
       <text x='30%' y='35%' text-anchor='middle'>A</text>
       <text x='70%' y='35%' text-anchor='middle'>B</text>
       <rect x='20%' y='40%' width='20%' height='20%' fill='yellow'></rect>
-      <circle cx='70%' cy='50%' r='10%' fill='blue'></circle>
+      <circle cx='70%' cy='50%' r='10%' fill='blue'></circle> -->
       
       
     <!-- Don't delete the closing tag! -->
@@ -76,7 +147,8 @@
   <!-- Further writeup -->
   <div class = 'content-column'>
 
-    <h1>Demo Video </h1>
+
+    <h3 class='vis-title'>Demo Video</h3>
     
     <p>Embed an MP4 demo video using the HTML5 &lt;video&gt; tag. For example, this screen recording Prof. Cody Dunne made of Mike Bostock's flexible transitions in D3 slide:</p>
     
@@ -86,7 +158,7 @@
        a <a href='http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4'>link to the video</a> instead.</p>
     </video>
 
-    <h1>Visualization explanation</h1>
+    <h3 class='vis-title'>Visualization explanation</h3>
     
     <p>Replace with a brief explanation (can be copied from the paper) and linked presentation slides.</p>
     
@@ -109,11 +181,27 @@
         Project</a>
         by Cody Dunne is used to create this assignment.
       </li>
+      <li>
+        <a href="https://codepen.io/Ash/pen/WBMxpp">
+        CSS style for titles</a>
+      </li>
     </ul>
   </div>
   
   <!-- Scripts at the end avoid need for dealing with async, defer, or onload event handlers -->
-  <script src="https://d3js.org/d3.v4.js"></script>
+
+  <script src='lib/d3.v6.1.1/d3.min.js'></script>
   <script src='js/visualization.js'></script>
+   
+  <script src='js/tags.js'></script>
+  <script src='js/word-cloud.js'></script>
+  <script src='js/meetups.js'></script>
+
+
+  <!-- <script type="text/javascript" src="bower_components/d3-cloud/d3.layout.cloud.js"></script>
+  <script type="text/javascript" src="tags.js"></script> -->
+
 </body>
+        <!-- <div id="vis"></div>
+        <script type="text/javascript" src="word-cloud.js"></script> -->
 </html>

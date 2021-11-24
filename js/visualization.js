@@ -1,9 +1,6 @@
 // Immediately Invoked Function Expression to limit access to our 
 // variables and prevent 
 
-
-
-
 var myDuration = 600;
 var firstTime = true;
 
@@ -16,7 +13,6 @@ height = 500,
 radius = Math.min(width, height) / 2;
 var color = d3.scaleOrdinal(['#EBB9DF','#60992D','#D991BA','#8CAE68']);
 
-
 var pie = d3.pie()
 .value(function(d) { return d.Count; })
 .sort(null);
@@ -26,34 +22,77 @@ var arc = d3.arc()
 .outerRadius(radius - 20);
 
 var svg = d3.select("#vis-svg-1")
-.attr("width", width+440)
+.attr("width", width)
 .attr("height", height)
 .append("g")
-.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+.attr("transform", "translate(" + width / 3.7 + "," + height / 2.1 + ")");
 
-
-  d3.tsv("data/data_total.tsv",type).then((data_pie, error) => {
-    //var reasonByAge = d3.group(data, d => d.Reason);
-    // var apples = regionsByFruit.get('Apples')
-    // var oranges = regionsByFruit.get('Oranges')
-    console.log(data_pie)
+  d3.csv("data/draft.csv",type).then((data_pie, error) => {
+    var reasonByAge = d3.rollup(data_pie, v => v.length, d => d.Reason, d => d.Age_Range);
+    var dict = [{Age_Range: '18-19', Reason: 'Entertainment', Count: reasonByAge.get('Entertainment').get('18-19')},
+                {Age_Range: '20-21', Reason: 'Entertainment', Count: reasonByAge.get('Entertainment').get('20-21')},
+                {Age_Range: '22-23', Reason: 'Entertainment', Count: reasonByAge.get('Entertainment').get('22-23')},
+                {Age_Range: '24-26', Reason: 'Entertainment', Count: reasonByAge.get('Entertainment').get('24-26')},
+                {Age_Range: '18-19', Reason: 'For a relationship', Count: reasonByAge.get('For a relationship').get('18-19')},
+                {Age_Range: '20-21', Reason: 'For a relationship', Count: reasonByAge.get('For a relationship').get('20-21')},
+                {Age_Range: '22-23', Reason: 'For a relationship', Count: reasonByAge.get('For a relationship').get('22-23')},
+                {Age_Range: '24-26', Reason: 'For a relationship', Count: reasonByAge.get('For a relationship').get('24-26')},
+                {Age_Range: '18-19', Reason: 'To meet new people', Count: reasonByAge.get('To meet new people').get('18-19')},
+                {Age_Range: '20-21', Reason: 'To meet new people', Count: reasonByAge.get('To meet new people').get('20-21')},
+                {Age_Range: '22-23', Reason: 'To meet new people', Count: reasonByAge.get('To meet new people').get('22-23')},
+                {Age_Range: '24-26', Reason: 'To meet new people', Count: reasonByAge.get('To meet new people').get('24-26')},
+                {Age_Range: '18-19', Reason: 'For casual hookups', Count: reasonByAge.get('For casual hookups').get('18-19')},
+                {Age_Range: '20-21', Reason: 'For casual hookups', Count: reasonByAge.get('For casual hookups').get('20-21')},
+                {Age_Range: '22-23', Reason: 'For casual hookups', Count: reasonByAge.get('For casual hookups').get('22-23')},
+                {Age_Range: '24-26', Reason: 'For casual hookups', Count: reasonByAge.get('For casual hookups').get('24-26')}]
     
     d3.selectAll('input[name="reason"]')
     .on('change',function(){
-      var data_filtered = data_pie.filter(d => (d.Reason == this.value))
+      var data_filtered = dict.filter(d => (d.Reason == this.value))
       change(data_filtered)
     })
-  
+
+    var tooltip = d3.select('#vis-svg-1')
+		.append('div')
+		.attr('class', 'tooltip');
+
+
+		tooltip.append('div')
+		.attr('class', 'label1');
+
+    tooltip.append('div')
+		.attr('class', 'label2');
+
+		tooltip.append('div')
+		.attr('class', 'count');
+
+		tooltip.append('div')
+		.attr('class', 'percent');
 
     function change(Age_Range) {
           var path = svg.selectAll("path");
-          console.log('in change Age_Range')
-          console.log(Age_Range)
           var data0 = path.data(),
           data1 = pie(Age_Range);
-          console.log(data1)
     
           path = path.data(data1, key);
+
+          path.on('mouseover', function(event,d) {
+            tooltip.select('.label1').html(d.data.Age_Range.toUpperCase()).style('color','black');
+            tooltip.select('.count').html(d.data.Count);
+            tooltip.select('.label2').html(d.data.Reason.toUpperCase()).style('color','black');
+      
+            tooltip.style('opacity',2);
+      
+          });
+      
+          path.on('mousemove', function(event,d) {
+            tooltip.style("left", (event.x)+"px") 
+            .style("top", (event.y + 20) +"px");
+          });
+      
+          path.on('mouseout', function() {
+            tooltip.style('opacity',0);
+          });
     
           path
           .transition()
@@ -98,6 +137,7 @@ var svg = d3.select("#vis-svg-1")
                   firstTime = false;
             
               };
+              
   }) 
   
   function key(d) {
@@ -171,72 +211,6 @@ function cloneObj(obj) {
   return o;
 }
 
-// // set the dimensions and margins of the graph
-// var margin = {top: 10, right: 30, bottom: 20, left: 50},
-//     width = 460 - margin.left - margin.right,
-//     height = 400 - margin.top - margin.bottom;
-
-// // append the svg object to the body of the page
-// var svg2 = d3.select("#my_dataviz")
-//   .append("svg")
-//     .attr("width", width + margin.left + margin.right)
-//     .attr("height", height + margin.top + margin.bottom)
-//   .append("g")
-//     .attr("transform",
-//           "translate(" + margin.left + "," + margin.top + ")");
-
-// // Parse the Data
-// d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_stacked.csv", function(data) {
-
-//   // List of subgroups = header of the csv files = soil condition here
-//   var subgroups = data.columns.slice(1)
-
-//   // List of groups = species here = value of the first column called group -> I show them on the X axis
-//   var groups = d3.map(data, function(d){return(d.group)}).keys()
-
-//   // Add X axis
-//   var x = d3.scaleBand()
-//       .domain(groups)
-//       .range([0, width])
-//       .padding([0.2])
-//   svg2.append("g")
-//     .attr("transform", "translate(0," + height + ")")
-//     .call(d3.axisBottom(x).tickSizeOuter(0));
-
-//   // Add Y axis
-//   var y = d3.scaleLinear()
-//     .domain([0, 60])
-//     .range([ height, 0 ]);
-//   svg2.append("g")
-//     .call(d3.axisLeft(y));
-
-//   // color palette = one color per subgroup
-//   var color = d3.scaleOrdinal()
-//     .domain(subgroups)
-//     .range(['#e41a1c','#377eb8','#4daf4a'])
-
-//   //stack the data? --> stack per subgroup
-//   var stackedData = d3.stack()
-//     .keys(subgroups)
-//     (data)
-
-//   // Show the bars
-//   svg2.append("g")
-//     .selectAll("g")
-//     // Enter in the stack data = loop key per key = group per group
-//     .data(stackedData)
-//     .enter().append("g")
-//       .attr("fill", function(d) { return color(d.key); })
-//       .selectAll("rect")
-//       // enter a second time = loop subgroup per subgroup to add all rectangles
-//       .data(function(d) { return d; })
-//       .enter().append("rect")
-//         .attr("x", function(d) { return x(d.data.group); })
-//         .attr("y", function(d) { return y(d[1]); })
-//         .attr("height", function(d) { return y(d[0]) - y(d[1]); })
-//         .attr("width",x.bandwidth())
-// })
-
 // Vis 3
 // set the dimensions and margins of the graph
 var width = 450,
@@ -251,6 +225,7 @@ var svg1 = d3.select("#my_dataviz")
   .append("svg")
     .attr("width", width)
     .attr("height", height)
+    .attr('id','svg1')
   .append("g")
     .attr("transform", `translate(${width/2}, ${height/2})`);
 
@@ -259,6 +234,7 @@ var svg2 = d3.select("#my_dataviz")
 .append("svg")
   .attr("width", width)
   .attr("height", height)
+  .attr('id','svg2')
 .append("g")
   .attr("transform", `translate(${width/2}, ${height/2})`);
 
@@ -272,11 +248,24 @@ var color1 = d3.scaleOrdinal()
 var pie = d3.pie()
   .value(function(d) {return d.Count})
 
+var tooltip = d3.select('#my_dataviz')                               
+  .append('div')                                                
+  .attr('class', 'tooltip');                                    
+              
+tooltip.append('div')                                           
+  .attr('class', 'label');                                      
+     
+tooltip.append('div')                                           
+  .attr('class', 'count');                                      
+
+tooltip.append('div')                                           
+  .attr('class', 'percent');
+
 d3.csv('data/Turn-Ons.csv').then(function(data){
   
 // Build the pie chart where each part of the pie is a path that we build using the arc function.
 svg1
-  .selectAll('whatever')
+  .selectAll('path')
   .data(pie(data))
   .join('path')
   .attr('d', d3.arc()
@@ -287,6 +276,40 @@ svg1
   .attr("stroke", "black")
   .style("stroke-width", "2px")
   .style("opacity", 0.7)
+
+  var mySvg = d3.select('#my_dataviz')
+  .append("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .attr('id','legend');
+
+
+  var legendG = mySvg.selectAll(".legend") // note appending it to mySvg and not svg to make positioning easier
+  .data(pie(data))
+  .enter().append("g")
+  .attr("transform", function(d, i) {
+     return "translate(" + (width - 350) + "," + (i * 15 + 20) + ")"; // place each legend on the right and bump each one down 15 pixels
+  })
+  .attr("class", "legend");
+
+legendG.append("rect") // make a matching color rect
+  .attr("width", 10)
+  .attr("height", 10)
+  .attr('x',8)
+  .attr('y',8)
+  .attr("fill", function(d, i) {
+     return color1(d.data.Categories);
+  });
+
+legendG.append("text") // add the text
+  .text(function(d) {
+     return d.data.Categories;
+  })
+  .style("font-size", 12)
+  .attr("y", 17)
+  .attr("x", 22);
+
+
 
 })
 

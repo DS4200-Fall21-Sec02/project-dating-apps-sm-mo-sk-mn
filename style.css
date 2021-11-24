@@ -15,6 +15,24 @@ h1, h2, h3 {
 
 }
 
+#my_dataviz{
+	width: 190%;
+	justify-content: center;
+	display: flex;
+}
+
+#svg1{
+	float: left;
+}
+#svg2{
+	float: right;
+}
+#legend{
+	flex-basis: content;
+	float:left;
+
+}
+
 
 #title {
     font-size:28px; 
@@ -50,6 +68,27 @@ h1 {
 	height: 300px;
 	margin-left: 200px;
 }
+
+form{
+	background: transparent;
+	filter: drop-shadow(2px 3px 9px rgba(0, 12, 63, .6))
+}
+fieldset {
+	background: #e6ebe1;
+	border: 5px solid #bf80a4;
+	  border-radius: 15px;
+	margin-bottom: 50px;
+	width: 475px;
+	padding-left: 50px;
+  }
+
+legend {
+	padding: 10px;
+	background: #bf80a4;
+	  border-radius: 12px;
+	  font-size: 1.05rem;
+	color: white;
+  }
 
 :root {
 	/* The intrinsic width of the underline stroke (in pixels). This is 

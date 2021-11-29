@@ -258,8 +258,6 @@ tooltip.append('div')
 tooltip.append('div')                                           
   .attr('class', 'count');                                      
 
-tooltip.append('div')                                           
-  .attr('class', 'percent');
 
 d3.csv('data/Turn-Ons.csv').then(function(data){
   
@@ -276,12 +274,38 @@ svg1
   .attr("stroke", "black")
   .style("stroke-width", "2px")
   .style("opacity", 0.7)
+  .on('mouseover',function(event,d){
+    d3.select(this).select('path').attr('d',zoom)
+  })
+
+  var zoom = d3.arc().innerRadius(0).outerRadius(180);
+
+
+})
+
+d3.csv('data/Turn-Offs.csv').then(function(data){
+  
+// Build the pie chart where each part of the pie is a path that we build using the arc function.
+svg2
+  .selectAll('whatever')
+  .data(pie(data))
+  .join('path')
+  .attr('d', d3.arc()
+    .innerRadius(0)
+    .outerRadius(radius)
+  )
+  .attr('fill', function(d){ return(color1(d.data.Categories)) })
+  .attr("stroke", "black")
+  .style("stroke-width", "2px")
+  .style("opacity", 0.7)
 
   var mySvg = d3.select('#my_dataviz')
   .append("svg")
       .attr("width", width)
       .attr("height", height)
       .attr('id','legend');
+
+  
 
 
   var legendG = mySvg.selectAll(".legend") // note appending it to mySvg and not svg to make positioning easier
@@ -308,25 +332,5 @@ legendG.append("text") // add the text
   .style("font-size", 12)
   .attr("y", 17)
   .attr("x", 22);
-
-
-
-})
-
-d3.csv('data/Turn-Offs.csv').then(function(data){
-  
-// Build the pie chart where each part of the pie is a path that we build using the arc function.
-svg2
-  .selectAll('whatever')
-  .data(pie(data))
-  .join('path')
-  .attr('d', d3.arc()
-    .innerRadius(0)
-    .outerRadius(radius)
-  )
-  .attr('fill', function(d){ return(color1(d.data.Categories)) })
-  .attr("stroke", "black")
-  .style("stroke-width", "2px")
-  .style("opacity", 0.7)
 
 })

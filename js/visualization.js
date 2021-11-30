@@ -245,7 +245,7 @@ var svg2 = d3.select("#my_dataviz")
 
 var color1 = d3.scaleOrdinal()
   //.domain(Object.keys(data))
-  .range(["#FCECDD", "#FFC288", "#FEA82F", "#FF6701", "#FF8303", "#A35709", "#864000"])
+  .range(["#FCECDD", "#FFC288", "#FEA82F", "#FF6701", "#FF8303", "#A35709", "#4E3620"])
 
 // Create pie
 var pie = d3.pie()

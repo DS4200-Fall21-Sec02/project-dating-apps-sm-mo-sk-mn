@@ -84,7 +84,7 @@ var svg = d3.select("#vis-svg-1")
       
           path.on('mousemove', function(event,d) {
             tooltip.style("left", (event.x)+"px") 
-            .style("top", (event.y+600) +"px");
+            .style("top", (event.y+700) +"px");
           });
       
           path.on('mouseout', function(event,d) {

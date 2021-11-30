@@ -53,23 +53,18 @@ var svg = d3.select("#vis-svg-1")
     })
 
     var tooltip = d3.select('#vis1')
-		.append('div')
-    .attr('background','red')
-    .attr('width','100px')
-    .attr('height','100px')
-		.attr('class', 'tooltip');
-
-		tooltip.append('div')
-		.attr('class', 'label1');
+    .append('div')
+    .style('opacity','0')
+    .attr('class', 'tooltip');
 
     tooltip.append('div')
-		.attr('class', 'label2');
+    .attr('class', 'label1');
 
-		tooltip.append('div')
-		.attr('class', 'count');
+    tooltip.append('div')
+    .attr('class', 'label2');
 
-		tooltip.append('div')
-		.attr('class', 'percent');
+    tooltip.append('div')
+    .attr('class', 'count');
 
     function change(Age_Range) {
           var path = svg.selectAll("path");
@@ -79,22 +74,22 @@ var svg = d3.select("#vis-svg-1")
           path = path.data(data1, key);
 
           path.on('mouseover', function(event,d) {
-            tooltip.select('.label1').html(d.data.Age_Range.toUpperCase()).style('color','black');
-            tooltip.select('.count').html(d.data.Count);
-            tooltip.select('.label2').html(d.data.Reason.toUpperCase()).style('color','black');
-            tooltip.style('opacity',2);
+            tooltip.select('.label1').html('Age Range: '+d.data.Age_Range).style('color','black');
+            tooltip.select('.count').html('Count: '+ d.data.Count);
+            tooltip.select('.label2').html('Reason: '+d.data.Reason).style('color','black');
+            tooltip.style('opacity',1);
+            d3.select(this).transition().duration(300).style('fill','#b8deea')
       
           });
       
           path.on('mousemove', function(event,d) {
             tooltip.style("left", (event.x)+"px") 
-            .style("top", (event.y + 20) +"px");
-            console.log('hello')
-
+            .style("top", (event.y+600) +"px");
           });
       
-          path.on('mouseout', function() {
+          path.on('mouseout', function(event,d) {
             tooltip.style('opacity',0);
+            d3.select(this).transition().duration(300).style('fill',color(d.data.Age_Range))
           });
     
           path
@@ -251,14 +246,15 @@ var color1 = d3.scaleOrdinal()
 var pie = d3.pie()
   .value(function(d) {return d.Count})
 
-var tooltip = d3.select('#my_dataviz')                               
-  .append('div')                                                
+var tooltip1 = d3.select('#my_dataviz')                               
+  .append('div')    
+  .style('opacity','0')                                            
   .attr('class', 'tooltip');                                    
               
-tooltip.append('div')                                           
-  .attr('class', 'label');                                      
+tooltip1.append('div')                                           
+  .attr('class', 'label1');                                      
      
-tooltip.append('div')                                           
+tooltip1.append('div')                                           
   .attr('class', 'count');                                      
 
 
@@ -278,10 +274,20 @@ svg1
   .style("stroke-width", "2px")
   .style("opacity", 0.7)
   .on('mouseover',function(event,d){
-    d3.select(this).select('path').attr('d',zoom)
+    tooltip1.select('.label1').html('Attribute: '+d.data.Categories).style('color','black');
+    tooltip1.select('.count').html('Count: '+d.data.Count);
+    tooltip1.style('opacity',1);
+    d3.select(this).transition().duration(300).style('fill','#b8deea')
   })
+  .on('mousemove', function(event,d) {
+    tooltip1.style("left", (event.x)+"px") 
+    .style("top", (event.y + 2300) +"px");
 
-  var zoom = d3.arc().innerRadius(0).outerRadius(180);
+  })
+  .on('mouseout', function() {
+    tooltip1.style('opacity',0);
+    d3.select(this).transition().duration(300).style('fill',function(d){ return(color1(d.data.Categories)) })
+  });
 
 
 })
@@ -301,6 +307,21 @@ svg2
   .attr("stroke", "black")
   .style("stroke-width", "2px")
   .style("opacity", 0.7)
+  .on('mouseover',function(event,d){
+    tooltip1.select('.label1').html('Attribute: '+d.data.Categories).style('color','black');
+    tooltip1.select('.count').html('Count: '+d.data.Count);
+    tooltip1.style('opacity',1);
+    d3.select(this).transition().duration(300).style('fill','#b8deea')
+  })
+  .on('mousemove', function(event,d) {
+    tooltip1.style("left", (event.x)+"px") 
+    .style("top", (event.y + 2300) +"px");
+
+  })
+  .on('mouseout', function() {
+    tooltip1.style('opacity',0);
+    d3.select(this).transition().duration(300).style('fill',function(d){ return(color1(d.data.Categories)) })
+  });
 
   var mySvg = d3.select('#my_dataviz')
   .append("svg")

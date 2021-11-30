@@ -15,6 +15,17 @@ h1, h2, h3 {
 
 }
 
+.tooltip {
+	position: absolute;
+	text-align: center;
+	padding: 10px;
+	font: 15px sans-serif;
+	background: #bfe29d;
+	border: 5px;
+	border-color: #82a361;
+	border-radius: 8px;
+  }
+
 #my_dataviz{
 	width: 190%;
 	justify-content: center;

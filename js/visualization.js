@@ -52,10 +52,12 @@ var svg = d3.select("#vis-svg-1")
       change(data_filtered)
     })
 
-    var tooltip = d3.select('#vis-svg-1')
+    var tooltip = d3.select('#vis1')
 		.append('div')
+    .attr('background','red')
+    .attr('width','100px')
+    .attr('height','100px')
 		.attr('class', 'tooltip');
-
 
 		tooltip.append('div')
 		.attr('class', 'label1');
@@ -80,7 +82,6 @@ var svg = d3.select("#vis-svg-1")
             tooltip.select('.label1').html(d.data.Age_Range.toUpperCase()).style('color','black');
             tooltip.select('.count').html(d.data.Count);
             tooltip.select('.label2').html(d.data.Reason.toUpperCase()).style('color','black');
-      
             tooltip.style('opacity',2);
       
           });
@@ -88,6 +89,8 @@ var svg = d3.select("#vis-svg-1")
           path.on('mousemove', function(event,d) {
             tooltip.style("left", (event.x)+"px") 
             .style("top", (event.y + 20) +"px");
+            console.log('hello')
+
           });
       
           path.on('mouseout', function() {

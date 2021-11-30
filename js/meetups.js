@@ -5,7 +5,7 @@ const m = {top: 10, right: 30, bottom: 20, left: 50},
 
 
 // append the svg4 object to the body of the page
-const svg4 = d3.select("#my_dataviz")
+const svg4 = d3.select(".vis-holder-1")
   .append("svg4")
     .attr("width", wi + m.left + m.right)
     .attr("height", he + m.top + m.bottom)

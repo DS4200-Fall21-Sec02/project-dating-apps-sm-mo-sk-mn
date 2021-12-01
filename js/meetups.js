@@ -48,6 +48,13 @@ d3.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRKwzteCb-m58OMLtu4EGBVm
     .keys(subgroups)
     (data)
 
+  //add axis titles
+  svg4.append("text")
+    .attr("x", 170)
+    .attr("y", 5)
+    .style("text-anchor", "middle")
+    .text("Matches Per Day")
+
   // Show the bars
   svg4.append("g")
     .selectAll("g")

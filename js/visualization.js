@@ -55,6 +55,7 @@ var svg = d3.select("#vis-svg-1")
     var tooltip = d3.select('#vis1')
     .append('div')
     .style('opacity','0')
+    .attr('weight','auto')
     .attr('class', 'tooltip');
 
     tooltip.append('div')

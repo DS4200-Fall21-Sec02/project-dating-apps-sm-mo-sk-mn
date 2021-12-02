@@ -302,7 +302,7 @@ svg1
   })
   .on('mousemove', function(event,d) {
     tooltip1.style("left", (event.x)+"px") 
-    .style("top", (event.y + 1500) +"px");
+    .style("top", (event.y + 1200) +"px");
 
   })
   .on('mouseout', function() {
@@ -337,7 +337,7 @@ svg2
   })
   .on('mousemove', function(event,d) {
     tooltip1.style("left", (event.x)+"px") 
-    .style("top", (event.y + 1500) +"px");
+    .style("top", (event.y + 1200) +"px");
 
   })
   .on('mouseout', function() {

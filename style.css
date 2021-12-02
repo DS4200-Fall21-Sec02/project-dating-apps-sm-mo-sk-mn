@@ -12,7 +12,7 @@ h1, h2, h3 {
 
 #highlight {
 	color: #619134;
-
+	font-family: "Gill Sans", sans-serif;
 }
 
 .tooltip {
@@ -20,7 +20,7 @@ h1, h2, h3 {
 	text-align: center;
 	padding: 10px;
 	font: 15px sans-serif;
-	background: #b8deea;
+	background: #b6cf9d;
 	border: 5px;
 	border-color: #77bdd3;
 	border-radius: 8px;

@@ -10,6 +10,12 @@ h1, h2, h3 {
 	line-height: 1.2
 }
 
+.selected{
+	stroke: black;
+	stroke-width: 2px;
+	filter:drop-shadow(1px 0px 2px black);
+}
+
 .bigtitle{
 	font-size:32px; 
     font-weight:700;  

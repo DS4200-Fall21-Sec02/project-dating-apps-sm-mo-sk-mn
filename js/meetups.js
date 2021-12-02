@@ -85,7 +85,7 @@ tooltip2.append('div')
       .data(d => d)
       .enter()
       .append("rect")
-        .attr('id',function(d){
+        .attr('class',function(d){
           var label = NaN;
           if (d.data.Meetups == '0'){
             label = 'cero'
@@ -139,7 +139,7 @@ tooltip2.append('div')
 // Locate our graph info
 let bars
 
-// Linking function
+// Linking function 1
 function updateChart1(age,reason){
   console.log()
   d3.csv("data/online_dating.csv",type).then(function(data2) {
@@ -151,24 +151,47 @@ function updateChart1(age,reason){
     var result = 0;
     if (mean==0){
       var result = 0;
-      bars.select('#cero').style('fill','black')
+      d3.selectAll('.cero').classed('selected',1)
     } else if (0<mean && mean<=3){
       var result = 3;
-      bars.select('#one').style('fill','black')
-      console.log(bars.select('#one'))
-      console.log(bars)
+      d3.selectAll('.one').classed('selected',1)
     } else if (3<mean && mean<=8){
       var result = 8;
-      bars.select('#four').style('fill','black')
+      d3.selectAll('.four').classed('selected',1)
     } else if (8<mean && mean<=15){
       var result = 15;
-      bars.select('#ten').style('fill','black')
+      d3.selectAll('.ten').classed('selected',1)
     }else{
       var result = 20;
-      bars.select('#twenty').style('fill','black')
+      d3.selectAll('.twenty').classed('selected',1)
     }
-    console.log(result)
-    
-
 })
 }
+// Linking function 2
+function removeClass(age,reason){
+  d3.csv("data/online_dating.csv",type).then(function(data3) {
+    var meets = d3.rollup(data3, v => d3.sum(v, d => d.Meetups), d => d.Reason, d => d.Age_Range);
+    var lens = d3.rollup(data3, v => v.length, d => d.Reason, d => d.Age_Range);
+    var mean = meets.get(reason).get(age)/lens.get(reason).get(age)
+    // We highlight the mean value of the corresponding age range + reason group
+    var result = 0;
+    if (mean==0){
+      var result = 0;
+      d3.selectAll('.cero').classed('selected',0)
+    } else if (0<mean && mean<=3){
+      var result = 3;
+      d3.selectAll('.one').classed('selected',0)
+    } else if (3<mean && mean<=8){
+      var result = 8;
+      d3.selectAll('.four').classed('selected',0)
+    } else if (8<mean && mean<=15){
+      var result = 15;
+      d3.selectAll('.ten').classed('selected',0)
+    }else{
+      var result = 20;
+      d3.selectAll('.twenty').classed('selected',0)
+    }
+})
+}
+
+

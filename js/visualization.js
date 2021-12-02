@@ -105,6 +105,9 @@ var svg = d3.select("#vis-svg-1")
             tooltip.style('opacity',0);
             d3.select(this).transition().duration(300)
               .style('filter','none')
+            var age = d.data.Age_Range;
+            var reason = d.data.Reason;
+            removeClass(age,reason)
           });
           
           // Transition into new data

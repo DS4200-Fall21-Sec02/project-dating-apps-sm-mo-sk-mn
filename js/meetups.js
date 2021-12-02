@@ -21,7 +21,7 @@ var svg4 = d3.select("#vis-holder-1")
 d3.csv("data/FinalMatchesPerDay.csv").then(function(data) {
 
 // Create tooltip 
-var tooltip2 = d3.select('#my_dataviz')                               
+var tooltip2 = d3.select('#visl2')                               
   .append('div')    
   .style('opacity','0')                                            
   .attr('class', 'tooltip');                                    
@@ -174,28 +174,20 @@ let bars
 
 // Linking function --> add linking
 function updateChart1(age,reason){
-  console.log()
   d3.csv("data/online_dating.csv",type).then(function(data2) {
     var meets = d3.rollup(data2, v => d3.sum(v, d => d.Meetups), d => d.Reason, d => d.Age_Range);
     var lens = d3.rollup(data2, v => v.length, d => d.Reason, d => d.Age_Range);
     var mean = meets.get(reason).get(age)/lens.get(reason).get(age)
-    console.log(mean)
     // We highlight the mean value of the corresponding age range + reason group
-    var result = 0;
     if (mean==0){
-      var result = 0;
       d3.selectAll('.cero').classed('selected',1)
     } else if (0<mean && mean<=3){
-      var result = 3;
       d3.selectAll('.one').classed('selected',1)
     } else if (3<mean && mean<=8){
-      var result = 8;
       d3.selectAll('.four').classed('selected',1)
     } else if (8<mean && mean<=15){
-      var result = 15;
       d3.selectAll('.ten').classed('selected',1)
     }else{
-      var result = 20;
       d3.selectAll('.twenty').classed('selected',1)
     }
 })

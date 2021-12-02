@@ -70,7 +70,7 @@ tooltip2.append('div')
     .attr("x", 170)
     .attr("y", 5)
     .style("text-anchor", "start")
-    .text("Meetups vs Matches")
+    .text("Meetups")
     .attr('id','highlight')
 
   // Show the bars and store for linking
@@ -85,6 +85,21 @@ tooltip2.append('div')
       .data(d => d)
       .enter()
       .append("rect")
+        .attr('id',function(d){
+          var label = NaN;
+          if (d.data.Meetups == '0'){
+            label = 'cero'
+          } else if (d.data.Meetups == '1-3'){
+            label = 'one'
+          } else if (d.data.Meetups == '4-8'){
+            label = 'four'
+          } else if (d.data.Meetups == '10-15'){
+            label = 'ten'
+          } else {
+            label = 'twenty'
+          }
+          return label
+        })
         .attr("x", d => x(d.data.Meetups))
         .attr("y", d => y(d[1]))
         .attr("height", d => y(d[0]) - y(d[1]))
@@ -126,7 +141,7 @@ let bars
 
 // Linking function
 function updateChart1(age,reason){
-  console.log(bars.select('g'))
+  console.log()
   d3.csv("data/online_dating.csv",type).then(function(data2) {
     var meets = d3.rollup(data2, v => d3.sum(v, d => d.Meetups), d => d.Reason, d => d.Age_Range);
     var lens = d3.rollup(data2, v => v.length, d => d.Reason, d => d.Age_Range);
@@ -136,14 +151,21 @@ function updateChart1(age,reason){
     var result = 0;
     if (mean==0){
       var result = 0;
+      bars.select('#cero').style('fill','black')
     } else if (0<mean && mean<=3){
       var result = 3;
+      bars.select('#one').style('fill','black')
+      console.log(bars.select('#one'))
+      console.log(bars)
     } else if (3<mean && mean<=8){
       var result = 8;
+      bars.select('#four').style('fill','black')
     } else if (8<mean && mean<=15){
       var result = 15;
+      bars.select('#ten').style('fill','black')
     }else{
       var result = 20;
+      bars.select('#twenty').style('fill','black')
     }
     console.log(result)
     

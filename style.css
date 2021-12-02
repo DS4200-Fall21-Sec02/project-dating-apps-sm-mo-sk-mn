@@ -10,6 +10,26 @@ h1, h2, h3 {
 	line-height: 1.2
 }
 
+.bigtitle{
+	font-size:32px; 
+    font-weight:700;  
+    letter-spacing:0.5px; 
+    text-align:center; 
+    margin:auto; 
+    white-space:nowrap; 
+    padding-bottom:13px;
+	color: #a36a8a;
+}
+.bigtitle1{
+	font-size:32px; 
+    font-weight:700;  
+    letter-spacing:0.5px; 
+    text-align:center; 
+    margin:auto; 
+    white-space:nowrap; 
+    padding-bottom:13px;
+}
+
 #highlight {
 	color: #619134;
 	font-family: "Gill Sans", sans-serif;

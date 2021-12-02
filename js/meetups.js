@@ -70,7 +70,7 @@ tooltip2.append('div')
     .attr("x", 170)
     .attr("y", 5)
     .style("text-anchor", "start")
-    .text("Meetups")
+    .text("Meetups vs Matches")
     .attr('id','highlight')
 
   // Show the bars and store for linking

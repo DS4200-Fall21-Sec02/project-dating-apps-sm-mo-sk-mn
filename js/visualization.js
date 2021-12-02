@@ -22,9 +22,10 @@ var arc = d3.arc()
 .outerRadius(radius - 20);
 
 var svg = d3.select("#vis-svg-1")
-.attr("width", width)
+.attr("width", width-400)
 .attr("height", height)
 .append("g")
+
 .attr("transform", "translate(" + width / 3.7 + "," + height / 2.1 + ")");
 
   d3.csv("data/draft.csv",type).then((data_pie, error) => {
@@ -80,6 +81,9 @@ var svg = d3.select("#vis-svg-1")
             tooltip.select('.label2').html('Reason: '+d.data.Reason).style('color','black');
             tooltip.style('opacity',1);
             d3.select(this).transition().duration(300).style('fill','#b8deea')
+            var age = d.data.Age_Range;
+            var reason = d.data.Reason;
+            updateChart1(age,reason);
       
           });
       

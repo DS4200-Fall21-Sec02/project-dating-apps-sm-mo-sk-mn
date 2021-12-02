@@ -60,7 +60,8 @@
   </div>
   
   <!-- Visualization goes here -->
-  <div class='vis-holder' id='vis1'>
+  <div class='container' style='width: 1100px;'>
+  <div class='vis-holder' id='vis1' style='width: 500px;float: left;margin: 10px;'>
     <!-- Change viewbox to whatever you want, e.g., '0 0 1000 6000' This determines your aspect ratio and coordinate system -->    
     <!-- Delete all the sample SVG code below after the viewbox to before the closing tag. Populate this part of the SVG with D3. -->
     <form>
@@ -103,10 +104,14 @@
       <circle cx='70%' cy='50%' r='10%' fill='blue'></circle> -->
     <!-- Don't delete the closing tag! -->
     </svg>
+    
+  </div>
+  <div id='vis-holder-1' style='width: 500px;float: right;'> 
+  </div>
   </div>
   
   <!-- Further writeup -->
-  <div class = 'content-column'>
+  <div class = 'content-column' style="clear: both;">
 
     <h3 class='vis-title'>Demo Video</h3>
     
@@ -144,17 +149,15 @@
     
     <div id="my_dataviz">
     </div>
-
-    <br><br>
+  
+    
+  </div>
+  <br><br>
     <h2 class='vis-title'>How many matches are people getting?</h2>
       
     <p>
       Our third visualization shows the number of people that get matches between each range, from 0 matches per day all the way to 20+ matches in a day. We also included a Not Applicable column for people who don't use a dating app. We have divided each column of match ranges into male and female matches to show the difference between our male and female users of dating apps. 
     </p>
-  
-    <div id='vis-holder-1'> 
-    </div>
-  </div>
   
   <!-- Further writeup -->
   <div class = 'content-column'>

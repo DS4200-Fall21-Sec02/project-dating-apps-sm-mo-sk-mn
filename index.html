@@ -85,7 +85,6 @@
       </fieldset>
     </form>
     <svg id='vis-svg-1'>
-      <!-- preserveAspectRatio='xMidYMid meet' class='vis-svg' viewBox='0 0 500 500' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'> -->
       <g id='legend' transform='translate(215,110)' width='50' height='50'>
         <text x='1%' y='16.5%' text-anchor='middle' style="font-size:17px;">Age Range:</text>
         <circle cx='0%' cy='20.5%' r='1.3%' fill='#EBB9DF'></circle>
@@ -97,70 +96,26 @@
         <circle cx='0%' cy='35.5%' r='1.3%' fill='#8CAE68'></circle>
         <text x='8%' y='36.8%' text-anchor='middle' style="font-size:17px;">24 to 26</text>
       </g>
-      
-      <!-- <text x='30%' y='35%' text-anchor='middle'>A</text>
-      <text x='70%' y='35%' text-anchor='middle'>B</text>
-      <rect x='20%' y='40%' width='20%' height='20%' fill='yellow'></rect>
-      <circle cx='70%' cy='50%' r='10%' fill='blue'></circle> -->
-    <!-- Don't delete the closing tag! -->
     </svg>
     
   </div>
-  <div id='vis-holder-1' style='width: 500px;float: right;'> 
+  <div id='vis-holder-1' style='width: 500px;float: right;'>
+    
   </div>
+  
+  
   </div>
   <div style="clear: both;"><br><br></div>
 
   <div class='vis-holder' id='vis2' style="clear: both;">
-    <p style="white-space: pre-wrap !important; text-anchor: middle;"><pre>                      Turn-Ons                                Turn-Offs</pre></p>
+    <p style="white-space: pre-wrap !important; text-anchor: middle;"><pre>                                                   Attributes                </pre></p>
+    <p style="white-space: pre-wrap !important; text-anchor: middle;"><pre>                                 Turn-Ons              VS                Turn-Offs</pre></p>
     
     <div id="my_dataviz">
     </div>
   
     
   </div>
-  
-  <!-- Further writeup -->
-  <div class = 'content-column' style="clear: both;">
-
-    <h3 class='vis-title'>Demo Video</h3>
-    
-    <p>
-      Embed an MP4 demo video using the HTML5 &lt;video&gt; tag. For example, this screen recording Prof. Cody Dunne made of Mike Bostock's flexible transitions in D3 slide:
-    </p>
-    
-    <video controls width='100%'>
-      <source src='http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4' type='video/mp4'>
-      <p>Your browser doesn't support HTML5 video. Here is
-       a <a href='http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4'>link to the video</a> instead.</p>
-    </video>
-    
-    <br><br>
-    <h3 class='vis-title'>Visualization explanation</h3>
-    
-    <p>For the creation of the visualization above we used the information provided in our survey which describes the main reason why users are active on their preferred dating app, 
-      and to provide a more insightful analysis we divided the results according to the age range of the user so we extract a relationship. Even though, as we can observe we have an uneven distribution regarding the ages 
-      of the users, we can extract relevant assumptions from the pies. For example, we can observe how the percentage of users between 24 and 26
-      increases when looking for a relationship out of the app.
-    </p>
-  
-
-    <br><br>
-    <h2 class='vis-title'>Vices turn ons vs. turn offs</h2>
-      
-    <p>
-      The second visualization breaks down the “vices” displayed on dating profiles. It breaks them into two categories: <i><b id="highlight">turn-ons and turn-offs. </b></i> We have created this visualization to show the distribution of these traits among our population of users.
-    </p>
-  </div>
-  
-  <!-- Visualization goes here -->
-
-  <br><br>
-    <h2 class='vis-title'>How many matches are people getting?</h2>
-      
-    <p>
-      Our third visualization shows the number of people that get matches between each range, from 0 matches per day all the way to 20+ matches in a day. We also included a Not Applicable column for people who don't use a dating app. We have divided each column of match ranges into male and female matches to show the difference between our male and female users of dating apps. 
-    </p>
   
   <!-- Further writeup -->
   <div class = 'content-column'>
@@ -177,10 +132,19 @@
        a <a href='http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4'>link to the video</a> instead.</p>
     </video>
 
+    <br><br>
     <h3 class='vis-title'>Visualization explanation</h3>
     
-    <p>Replace with a brief explanation (can be copied from the paper) and linked presentation slides.</p>
-    
+    <p>Welcome to our visualization!! After all of our hard work we managed to show you relevant information about a topic everyone is interested in: dating apps.
+      Above we present relevant facts and information that could help you adapt or reject these platforms. For the creation of the  first visualization we used the information provided in our survey which describes the <i><b id="highlight">main reason </b></i>why users are active on their preferred dating app, 
+      and to provide a more insightful analysis we divided the results according to the <i><b id="highlight">age range </b></i>of the user so we extract a relationship. Even though, as we can observe we have an uneven distribution regarding the ages 
+      of the users, we can extract relevant assumptions from the pies. We made the visualization interactive so we could present the information in a more fun and interactive way to the user, facilitating the information retrieval.
+      Our second visualization shows the <i><b id="highlight">number of matches that our responders get divided by ranges</b></i>, from 0 matches per day all the way to 20+ matches in a day. We have divided each column of match ranges into male and female matches to show the difference between our male and female users of dating apps. 
+      The third visualization breaks down the “vices” displayed on dating profiles. It breaks them into two categories: <i><b id="highlight">turn-ons and turn-offs. </b></i> We have created this visualization to show the distribution of these traits among our population of users.
+      </p>
+  
+
+    <br><br>
     <h1>Acknowledgments</h1>
 
     <p>
@@ -203,6 +167,10 @@
       <li>
         <a href="https://codepen.io/Ash/pen/WBMxpp">
         CSS style for titles</a>
+      </li>
+      <li>
+        <a href='https://bl.ocks.org/mbostock/1346410'>
+        Interactive Pie chart</a>
       </li>
     </ul>
   </div>

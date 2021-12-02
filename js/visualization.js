@@ -286,7 +286,7 @@ svg1
   })
   .on('mousemove', function(event,d) {
     tooltip1.style("left", (event.x)+"px") 
-    .style("top", (event.y + 1000) +"px");
+    .style("top", (event.y + 1200) +"px");
 
   })
   .on('mouseout', function() {
@@ -320,7 +320,7 @@ svg2
   })
   .on('mousemove', function(event,d) {
     tooltip1.style("left", (event.x)+"px") 
-    .style("top", (event.y + 1000) +"px");
+    .style("top", (event.y + 1200) +"px");
 
   })
   .on('mouseout', function() {
@@ -334,22 +334,21 @@ svg2
       .attr("height", height)
       .attr('id','legend');
 
-  
-
 
   var legendG = mySvg.selectAll(".legend") // note appending it to mySvg and not svg to make positioning easier
   .data(pie(data))
   .enter().append("g")
   .attr("transform", function(d, i) {
-     return "translate(" + (width - 350) + "," + (i * 15 + 20) + ")"; // place each legend on the right and bump each one down 15 pixels
+     return "translate(" + (width - 390) + "," + (i * 24 + 10) + ")"; // place each legend on the right and bump each one down 15 pixels
   })
   .attr("class", "legend");
 
 legendG.append("rect") // make a matching color rect
-  .attr("width", 10)
-  .attr("height", 10)
+  .attr("width", 16)
+  .attr("height", 16)
   .attr('x',8)
   .attr('y',8)
+  .style('stroke','black')
   .attr("fill", function(d, i) {
      return color1(d.data.Categories);
   });
@@ -358,8 +357,8 @@ legendG.append("text") // add the text
   .text(function(d) {
      return d.data.Categories;
   })
-  .style("font-size", 12)
-  .attr("y", 17)
-  .attr("x", 22);
+  .style("font-size", 17)
+  .attr("y", 22)
+  .attr("x", 29);
 
 })

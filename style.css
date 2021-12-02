@@ -41,7 +41,6 @@ h1, h2, h3 {
 #legend{
 	flex-basis: content;
 	float:left;
-
 }
 
 
@@ -89,7 +88,7 @@ fieldset {
 	border: 5px solid #bf80a4;
 	  border-radius: 15px;
 	margin-bottom: 50px;
-	width: 475px;
+	width: 500px;
 	padding-left: 50px;
   }
 

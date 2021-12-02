@@ -18,7 +18,7 @@ var svg4 = d3.select("#vis-holder-1")
 // Parse the Data
 d3.csv("data/FinalMatchesPerDay.csv").then(function(data) {
 
-  var tooltip2 = d3.select('#my_dataviz')                               
+var tooltip2 = d3.select('#my_dataviz')                               
   .append('div')    
   .style('opacity','0')                                            
   .attr('class', 'tooltip');                                    
@@ -70,6 +70,8 @@ tooltip2.append('div')
     .attr("y", 5)
     .style("text-anchor", "start")
     .text("Matches Per Day")
+  
+  
 
   // Show the bars
   bars = svg4.append("g")
@@ -93,7 +95,7 @@ tooltip2.append('div')
             var count = d[1]-d[0]
           } else {
             var key1 = 'Male'
-            var count = d[0]
+            var count = d[1]
           }
           tooltip2.select('.label1').html('Sex: '+key1).style('color','black');
           tooltip2.select('.label2').html('Meetups: '+d.data.Meetups);
@@ -103,7 +105,7 @@ tooltip2.append('div')
         })
         .on('mousemove', function(event,d) {
           tooltip2.style("left", (event.x)+"px") 
-          .style("top", (event.y + 750) +"px");
+          .style("top", (event.y + 850) +"px");
         })
         .on('mouseout', function(event,d) {
           if (d[0]>0){
@@ -114,6 +116,8 @@ tooltip2.append('div')
           tooltip2.style('opacity',0);
           d3.select(this).transition().duration(300).style('fill',function(d){ return(color(key1)) })
         });
+
+    
 })
 
 let bars
@@ -121,17 +125,17 @@ let bars
 function updateChart1(age,reason){
   console.log(bars.select('g'))
   d3.csv("data/draft.csv",type).then(function(data2) {
-    var meets = d3.rollup(data2, v => d3.sum(v, d => d.Meetups), d => d.Reason, d => d.Age_Range);
+    var meets = d3.rollup(data2, v => d3.sum(v, d => d.Matches), d => d.Reason, d => d.Age_Range);
     var lens = d3.rollup(data2, v => v.length, d => d.Reason, d => d.Age_Range);
     var mean = meets.get(reason).get(age)/lens.get(reason).get(age)
     console.log(mean)
     if (mean==0){
       console.log(0)
-    } else if (0<mean<3){
+    } else if (0<mean && mean<=3){
       console.log(3)
-    } else if (3<mean<8){
+    } else if (3<mean && mean<=8){
       console.log(8)
-    } else if (8<mean<15){
+    } else if (8<mean && mean<=15){
       console.log(15)
     }else{
       console.log(20)

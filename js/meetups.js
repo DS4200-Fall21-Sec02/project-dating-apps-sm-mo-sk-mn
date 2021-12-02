@@ -1,6 +1,8 @@
 // set the dimensions and margins of the graph
 const m = {top: 10, right: 30, bottom: 20, left: 50},
     wi = 460 - m.left - m.right+100,
+    legendh = 100,
+    padding = 40,
     he = 400 - m.top - m.bottom+100;
 
 // append the svg object to the body of the page
@@ -73,6 +75,37 @@ tooltip2.append('div')
     .text("Meetups")
     .attr('id','highlight')
 
+  // Add a legend
+    var legendh = svg4.selectAll(".legend") 
+    .data(stackedData)
+    .enter().append("g")
+    .attr("transform", function(d, i) {
+       return "translate(" + (wi - 390) + "," + (i * 24 + 10) + ")"; // place each legend on the right and bump each one down 24 pixels
+    })
+    .attr("class", "legend");
+  
+   // Create color elements as rects and set corresponding color
+    legendh.append("rect") // make a matching color rect
+      .data(subgroups)
+      .attr("width", 16)
+      .attr("height", 16)
+      .attr('x',326)
+      .attr('y',8)
+      .style('stroke','black')
+      .attr("fill", function(d, i) {
+         return color(d);
+      });
+  
+    // Create text elements and set corresponding attribute name
+    legendh.append("text") // add the text
+      .data(subgroups)
+      .text(function(d) {
+         return d;
+      })
+      .style("font-size", 17)
+      .attr("y", 22)
+      .attr("x", 350);
+
   // Show the bars and store for linking
   bars = svg4.append("g")
     .selectAll("g")
@@ -121,7 +154,7 @@ tooltip2.append('div')
         })
         .on('mousemove', function(event,d) {
           tooltip2.style("left", (event.x)+"px") 
-          .style("top", (event.y + 850) +"px");
+          .style("top", (event.y + 600) +"px");
         })
         .on('mouseout', function(event,d) {
           if (d[0]>0){
@@ -139,7 +172,7 @@ tooltip2.append('div')
 // Locate our graph info
 let bars
 
-// Linking function 1
+// Linking function --> add linking
 function updateChart1(age,reason){
   console.log()
   d3.csv("data/online_dating.csv",type).then(function(data2) {
@@ -167,28 +200,22 @@ function updateChart1(age,reason){
     }
 })
 }
-// Linking function 2
+// Linking function --> remove linking
 function removeClass(age,reason){
   d3.csv("data/online_dating.csv",type).then(function(data3) {
     var meets = d3.rollup(data3, v => d3.sum(v, d => d.Meetups), d => d.Reason, d => d.Age_Range);
     var lens = d3.rollup(data3, v => v.length, d => d.Reason, d => d.Age_Range);
     var mean = meets.get(reason).get(age)/lens.get(reason).get(age)
-    // We highlight the mean value of the corresponding age range + reason group
-    var result = 0;
+    // We remove the highlight from the mean value of the corresponding age range + reason group
     if (mean==0){
-      var result = 0;
       d3.selectAll('.cero').classed('selected',0)
     } else if (0<mean && mean<=3){
-      var result = 3;
       d3.selectAll('.one').classed('selected',0)
     } else if (3<mean && mean<=8){
-      var result = 8;
       d3.selectAll('.four').classed('selected',0)
     } else if (8<mean && mean<=15){
-      var result = 15;
       d3.selectAll('.ten').classed('selected',0)
     }else{
-      var result = 20;
       d3.selectAll('.twenty').classed('selected',0)
     }
 })

@@ -16,7 +16,21 @@ var svg4 = d3.select("#vis-holder-1")
 
 
 // Parse the Data
-d3.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRKwzteCb-m58OMLtu4EGBVm7g0uYB5D377RCNIfjPKRNtC6o84EbQhif1zyi0uyGA-1FjytCdsbBP6/pub?gid=1069853049&single=true&output=csv").then(function(data) {
+d3.csv("data/FinalMatchesPerDay.csv").then(function(data) {
+
+  var tooltip2 = d3.select('#my_dataviz')                               
+  .append('div')    
+  .style('opacity','0')                                            
+  .attr('class', 'tooltip');                                    
+              
+tooltip2.append('div')                                           
+  .attr('class', 'label1');                                      
+     
+tooltip2.append('div')                                           
+  .attr('class', 'label2');
+
+tooltip2.append('div')                                           
+  .attr('class', 'count');
 
   // List of subgroups = header of the csv files = soil condition here
   const subgroups = data.columns.slice(1)
@@ -54,7 +68,7 @@ d3.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRKwzteCb-m58OMLtu4EGBVm
   svg4.append("text")
     .attr("x", 170)
     .attr("y", 5)
-    .style("text-anchor", "middle")
+    .style("text-anchor", "start")
     .text("Matches Per Day")
 
   // Show the bars
@@ -73,8 +87,33 @@ d3.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRKwzteCb-m58OMLtu4EGBVm
         .attr("y", d => y(d[1]))
         .attr("height", d => y(d[0]) - y(d[1]))
         .attr("width",x.bandwidth())
-
-  
+        .on('mouseover',function(event,d){
+          if (d[0]>0){
+            var key1 = 'Female'
+            var count = d[1]-d[0]
+          } else {
+            var key1 = 'Male'
+            var count = d[0]
+          }
+          tooltip2.select('.label1').html('Sex: '+key1).style('color','black');
+          tooltip2.select('.label2').html('Meetups: '+d.data.Meetups);
+          tooltip2.select('.count').html('Count: '+count);
+          tooltip2.style('opacity',1);
+          d3.select(this).transition().duration(300).style('fill','#b8deea')
+        })
+        .on('mousemove', function(event,d) {
+          tooltip2.style("left", (event.x)+"px") 
+          .style("top", (event.y + 750) +"px");
+        })
+        .on('mouseout', function(event,d) {
+          if (d[0]>0){
+            var key1 = 'Female'
+          } else {
+            var key1 = 'Male'
+          }
+          tooltip2.style('opacity',0);
+          d3.select(this).transition().duration(300).style('fill',function(d){ return(color(key1)) })
+        });
 })
 
 let bars
@@ -87,15 +126,15 @@ function updateChart1(age,reason){
     var mean = meets.get(reason).get(age)/lens.get(reason).get(age)
     console.log(mean)
     if (mean==0){
-      console.log(bars.select('g'))
+      console.log(0)
     } else if (0<mean<3){
-      console.log(bars.select('g'))
+      console.log(3)
     } else if (3<mean<8){
-      console.log(bars.select('g'))
+      console.log(8)
     } else if (8<mean<15){
-      console.log(bars.select('g'))
+      console.log(15)
     }else{
-      console.log(bars.select('g'))
+      console.log(20)
     }
     
 

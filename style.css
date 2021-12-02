@@ -27,7 +27,7 @@ h1, h2, h3 {
   }
 
 #my_dataviz{
-	width: 145%;
+	width: 120%;
 	justify-content: center;
 	display: flex;
 }

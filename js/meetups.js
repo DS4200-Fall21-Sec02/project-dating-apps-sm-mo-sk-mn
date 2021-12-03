@@ -178,7 +178,7 @@ function updateChart1(age,reason){
     var meets = d3.rollup(data2, v => d3.sum(v, d => d.Meetups), d => d.Reason, d => d.Age_Range);
     var lens = d3.rollup(data2, v => v.length, d => d.Reason, d => d.Age_Range);
     var mean = meets.get(reason).get(age)/lens.get(reason).get(age)
-    // We highlight the mean value of the corresponding age range + reason group
+    // We highlight the mean value of meetups of the corresponding age range + reason group
     if (mean==0){
       d3.selectAll('.cero').classed('selected',1)
     } else if (0<mean && mean<=3){
@@ -198,7 +198,7 @@ function removeClass(age,reason){
     var meets = d3.rollup(data3, v => d3.sum(v, d => d.Meetups), d => d.Reason, d => d.Age_Range);
     var lens = d3.rollup(data3, v => v.length, d => d.Reason, d => d.Age_Range);
     var mean = meets.get(reason).get(age)/lens.get(reason).get(age)
-    // We remove the highlight from the mean value of the corresponding age range + reason group
+    // We remove the highlight from the mean value of meetups of the corresponding age range + reason group
     if (mean==0){
       d3.selectAll('.cero').classed('selected',0)
     } else if (0<mean && mean<=3){

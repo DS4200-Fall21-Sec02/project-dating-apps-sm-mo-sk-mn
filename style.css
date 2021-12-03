@@ -10,12 +10,14 @@ h1, h2, h3 {
 	line-height: 1.2
 }
 
+/* Linking selection class */
 .selected{
 	stroke: black;
 	stroke-width: 2px;
 	filter:drop-shadow(1px 0px 2px black);
 }
 
+/* Main titles formatting */
 .bigtitle{
 	font-size:32px; 
     font-weight:700;  
@@ -35,12 +37,12 @@ h1, h2, h3 {
     white-space:nowrap; 
     padding-bottom:13px;
 }
-
+/* Highlighted words in text */
 #highlight {
 	color: #619134;
 	font-family: "Gill Sans", sans-serif;
 }
-
+/* Tooltip formatting */
 .tooltip {
 	position: absolute;
 	text-align: center;
@@ -51,13 +53,12 @@ h1, h2, h3 {
 	border-color: #77bdd3;
 	border-radius: 8px;
   }
-
+/* Formatting for flex disposition of the vis */
 #my_dataviz{
 	width: 120%;
 	justify-content: center;
 	display: flex;
 }
-
 #svg1{
 	float: left;
 }
@@ -68,8 +69,14 @@ h1, h2, h3 {
 	flex-basis: content;
 	float:left;
 }
+.flex-container {
+    display: flex;
+	justify-content: center;
+	height: 300px;
+	margin-left: 200px;
+}
 
-
+/* Small titles style */
 #title {
     font-size:28px; 
     font-weight:700;  
@@ -89,22 +96,7 @@ h1 {
     white-space:nowrap; 
     padding-bottom:13px;
 }
-  #title:before {
-      background-color: #D991BA;
-      content: '';
-      display: block;
-      height: 3px;
-      width: 75px;
-      margin-bottom: 5px;
-  }
-
-.flex-container {
-    display: flex;
-	justify-content: center;
-	height: 300px;
-	margin-left: 200px;
-}
-
+/* Formatting for the fieldset */
 form{
 	background: transparent;
 	filter: drop-shadow(2px 3px 9px rgba(0, 12, 63, .6))
@@ -124,6 +116,15 @@ legend {
 	  border-radius: 12px;
 	  font-size: 1.05rem;
 	color: white;
+  }
+/* Formatting for the small title styles, underscore highlight, from source */
+#title:before {
+      background-color: #D991BA;
+      content: '';
+      display: block;
+      height: 3px;
+      width: 75px;
+      margin-bottom: 5px;
   }
 
 :root {

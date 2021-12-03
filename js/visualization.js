@@ -90,7 +90,7 @@ var svg = d3.select("#vis-svg-1")
             // Store selection for linking
             var age = d.data.Age_Range;
             var reason = d.data.Reason;
-            updateChart1(age,reason);
+            updateChart1(age,reason,1);
       
           });
           
@@ -107,7 +107,7 @@ var svg = d3.select("#vis-svg-1")
               .style('filter','none')
             var age = d.data.Age_Range;
             var reason = d.data.Reason;
-            removeClass(age,reason)
+            updateChart1(age,reason,0);
           });
           
           // Transition into new data

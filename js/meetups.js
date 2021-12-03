@@ -172,45 +172,26 @@ tooltip2.append('div')
 // Locate our graph info
 let bars
 
-// Linking function --> add linking
-function updateChart1(age,reason){
+// Linking function --> add linking when value == 1 and remove when value == 0
+function updateChart1(age,reason,value){
   d3.csv("data/online_dating.csv",type).then(function(data2) {
-    var meets = d3.rollup(data2, v => d3.sum(v, d => d.Meetups), d => d.Reason, d => d.Age_Range);
-    var lens = d3.rollup(data2, v => v.length, d => d.Reason, d => d.Age_Range);
-    var mean = meets.get(reason).get(age)/lens.get(reason).get(age)
+    const meets = d3.rollup(data2, v => d3.sum(v, d => d.Meetups), d => d.Reason, d => d.Age_Range);
+    const lens = d3.rollup(data2, v => v.length, d => d.Reason, d => d.Age_Range);
+    const mean = meets.get(reason).get(age)/lens.get(reason).get(age)
     // We highlight the mean value of meetups of the corresponding age range + reason group
     if (mean==0){
-      d3.selectAll('.cero').classed('selected',1)
+      d3.selectAll('.cero').classed('selected',value)
     } else if (0<mean && mean<=3){
-      d3.selectAll('.one').classed('selected',1)
+      d3.selectAll('.one').classed('selected',value)
     } else if (3<mean && mean<=8){
-      d3.selectAll('.four').classed('selected',1)
+      d3.selectAll('.four').classed('selected',value)
     } else if (8<mean && mean<=15){
-      d3.selectAll('.ten').classed('selected',1)
+      d3.selectAll('.ten').classed('selected',value)
     }else{
-      d3.selectAll('.twenty').classed('selected',1)
+      d3.selectAll('.twenty').classed('selected',value)
     }
 })
 }
-// Linking function --> remove linking
-function removeClass(age,reason){
-  d3.csv("data/online_dating.csv",type).then(function(data3) {
-    var meets = d3.rollup(data3, v => d3.sum(v, d => d.Meetups), d => d.Reason, d => d.Age_Range);
-    var lens = d3.rollup(data3, v => v.length, d => d.Reason, d => d.Age_Range);
-    var mean = meets.get(reason).get(age)/lens.get(reason).get(age)
-    // We remove the highlight from the mean value of meetups of the corresponding age range + reason group
-    if (mean==0){
-      d3.selectAll('.cero').classed('selected',0)
-    } else if (0<mean && mean<=3){
-      d3.selectAll('.one').classed('selected',0)
-    } else if (3<mean && mean<=8){
-      d3.selectAll('.four').classed('selected',0)
-    } else if (8<mean && mean<=15){
-      d3.selectAll('.ten').classed('selected',0)
-    }else{
-      d3.selectAll('.twenty').classed('selected',0)
-    }
-})
-}
+
 
 
